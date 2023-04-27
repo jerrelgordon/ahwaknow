@@ -1,1 +1,3 @@
-# ahwaknow
+# "Ah Wa Know"
+
+The "Ah Wa Know" Twitter bot is a collaborative effort by a team of young developers from Trinidad and Tobago. The name of the bot, which means "I want to know" in Trinidadian Creole English, is inspired by the team's roots. The bot's primary purpose is to enable Twitter users to perform fact-checking during public conversations by utilizing the ChatGPT language model. Additionally, the bot allows users to engage with it via direct messages. Ah Wa Know is primarily for FUN!!! However, it also serves as an opportunity for the team to gain experience working with APIs, as well as integrating Python and OpenAI.
