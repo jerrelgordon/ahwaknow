@@ -27,5 +27,5 @@ Violating any laws, regulations, or ethical standards
 The Bot is provided "as is" and the developers of the Bot do not make any warranties or representations regarding its performance, accuracy, or reliability. The developers shall not be liable for any direct, indirect, incidental, or consequential damages arising from the use of the Bot.
 
 ## Intellectual Property
-The Bot is released as an open source project meant for fun, which means that you are free to use, modify, and distribute the Bot as you wish. All we ask is that all contributions align with the fun lightheaded nature of the project. 
+The Bot is released as a partially open source project meant for fun, which means that you are free to use, modify, and distribute the core code as you wish. Requests to contribute to the live Bot will be considered on a case by case basis since we will need to share the Access Tokens for any testing. Developers are free to use the code and test on their own twitter accounts if they wish.
 
