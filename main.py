@@ -1,4 +1,5 @@
 import tweepy
+import openai
 
 # Set up the authentication by reading the credentials from file
 with open('creds.txt', 'r') as f:
@@ -6,16 +7,29 @@ with open('creds.txt', 'r') as f:
     apiSecretKey = f.readline().strip()
     accessToken = f.readline().strip()
     accessTokenSecret = f.readline().strip()
+    openaiToken = f.readline().strip()
 
 auth = tweepy.OAuthHandler(apiKey, apiSecretKey)
 auth.set_access_token(accessToken, accessTokenSecret)
-
+openai.api_key = openaiToken
 
 # Create a Tweepy API object
 api = tweepy.API(auth)
 
 
 MENTIONS_LOG_FILE = "mentions-log.txt"
+
+def get_gpt_response(query):
+    prompt = query
+    response = openai.Completion.create(
+        engine="davinci",
+        prompt=prompt,
+        max_tokens=100,
+        n=1,
+        stop=["."],
+        temperature=0.7,
+    )
+    return response.choices[0].text.strip()
 
 
 def load_replied_tweet_ids():
@@ -40,10 +54,12 @@ def reply_to_mentions():
     for mention in mentions:
         query = mention.text
         query = query.lower().replace("@ahwaknow","")
+        reply = get_gpt_response(query).lower().replace('"','')
+        
          
         if mention.id not in replied_tweet_ids:
             api.update_status(
-                status="'" + query +"'",
+                status=reply,
                 in_reply_to_status_id=mention.id,
                 auto_populate_reply_metadata=True
             )
@@ -54,3 +70,5 @@ def reply_to_mentions():
 
 # Call the function to reply to mentions
 reply_to_mentions()
+
+
